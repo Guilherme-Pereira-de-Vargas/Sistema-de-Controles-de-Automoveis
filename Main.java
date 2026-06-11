@@ -1,3 +1,6 @@
+// Falta opções de alterar e excluir, ajustes finais.
+// GitHub: https://github.com/Guilherme-Pereira-de-Vargas/Sistema-de-Controles-de-Automoveis.git
+
 import java.util.Scanner;
 
 class Pessoa {

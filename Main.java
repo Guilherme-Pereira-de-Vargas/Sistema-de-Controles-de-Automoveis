@@ -1,4 +1,3 @@
-// Falta opções de alterar e excluir, ajustes finais.
 // GitHub: https://github.com/Guilherme-Pereira-de-Vargas/Sistema-de-Controles-de-Automoveis.git
 
 import java.util.Scanner;
@@ -232,7 +231,7 @@ public class Main {
                     } while (opcaoCadastro != 0);
 
                     break;
-                
+
                 case 2:
 
                     int opcaoPesquisa;
@@ -418,6 +417,206 @@ public class Main {
 
                     break;
 
+                case 3:
+
+                    int opcaoAlterar;
+
+                    do {
+
+                        System.out.println("\n--- ALTERAR ---");
+                        System.out.println("1 - Cliente");
+                        System.out.println("2 - Funcionário");
+                        System.out.println("3 - Veículo");
+                        System.out.println("0 - Voltar");
+                        System.out.print("Opção: ");
+
+                        opcaoAlterar = entrada.nextInt();
+                        entrada.nextLine();
+
+                        switch (opcaoAlterar) {
+
+                            case 1:
+
+                                for (int i = 0; i < qtdClientes; i++) {
+                                    System.out.println(i + " - " + clientes[i].nome);
+                                }
+
+                                System.out.print("Código: ");
+                                int codCliente = entrada.nextInt();
+                                entrada.nextLine();
+
+                                System.out.print("Novo nome: ");
+                                String nomeCli = entrada.nextLine();
+
+                                System.out.print("Novo CPF: ");
+                                String cpfCli = entrada.nextLine();
+
+                                System.out.print("Novo telefone: ");
+                                String telefone = entrada.nextLine();
+
+                                clientes[codCliente] = new Cliente(nomeCli, cpfCli, telefone);
+
+                                System.out.println("Cliente alterado!");
+                                break;
+
+                            case 2:
+
+                                for (int i = 0; i < qtdFuncionarios; i++) {
+                                    System.out.println(i + " - " + funcionarios[i].nome);
+                                }
+
+                                System.out.print("Código: ");
+                                int codFunc = entrada.nextInt();
+                                entrada.nextLine();
+
+                                System.out.print("Novo nome: ");
+                                String nomeFun = entrada.nextLine();
+
+                                System.out.print("Novo CPF: ");
+                                String cpfFun = entrada.nextLine();
+
+                                System.out.print("Novo cargo: ");
+                                String cargo = entrada.nextLine();
+
+                                funcionarios[codFunc] = new Funcionario(nomeFun, cpfFun, cargo);
+
+                                System.out.println("Funcionário alterado!");
+                                break;
+
+                            case 3:
+
+                                for (int i = 0; i < qtdVeiculos; i++) {
+                                    System.out.println(i + " - Veículo");
+                                }
+
+                                System.out.print("Código: ");
+                                int codVeiculo = entrada.nextInt();
+                                entrada.nextLine();
+
+                                System.out.println("1 - Carro");
+                                System.out.println("2 - Moto");
+                                System.out.print("Tipo: ");
+                                int tipo = entrada.nextInt();
+                                entrada.nextLine();
+
+                                System.out.print("Marca: ");
+                                String marca = entrada.nextLine();
+
+                                System.out.print("Modelo: ");
+                                String modelo = entrada.nextLine();
+
+                                System.out.print("Preço: ");
+                                double preco = entrada.nextDouble();
+
+                                if (tipo == 1) {
+
+                                    System.out.print("Portas: ");
+                                    int portas = entrada.nextInt();
+
+                                    veiculos[codVeiculo] = new Carro(
+                                            marca,
+                                            modelo,
+                                            preco,
+                                            portas);
+
+                                } else {
+
+                                    System.out.print("Cilindradas: ");
+                                    int cilindradas = entrada.nextInt();
+
+                                    veiculos[codVeiculo] = new Moto(
+                                            marca,
+                                            modelo,
+                                            preco,
+                                            cilindradas);
+                                }
+
+                                entrada.nextLine();
+
+                                System.out.println("Veículo alterado!");
+                                break;
+                        }
+
+                    } while (opcaoAlterar != 0);
+
+                    break;
+
+                case 4:
+
+                    int opcaoExcluir;
+
+                    do {
+
+                        System.out.println("\n--- EXCLUIR ---");
+                        System.out.println("1 - Cliente");
+                        System.out.println("2 - Funcionário");
+                        System.out.println("3 - Veículo");
+                        System.out.println("0 - Voltar");
+                        System.out.print("Opção: ");
+
+                        opcaoExcluir = entrada.nextInt();
+                        entrada.nextLine();
+
+                        switch (opcaoExcluir) {
+
+                            case 1:
+
+                                for (int i = 0; i < qtdClientes; i++) {
+                                    System.out.println(i + " - " + clientes[i].nome);
+                                }
+
+                                System.out.print("Código: ");
+                                int excluirCliente = entrada.nextInt();
+
+                                for (int i = excluirCliente; i < qtdClientes - 1; i++) {
+                                    clientes[i] = clientes[i + 1];
+                                }
+
+                                qtdClientes--;
+
+                                System.out.println("Cliente removido!");
+                                break;
+
+                            case 2:
+
+                                for (int i = 0; i < qtdFuncionarios; i++) {
+                                    System.out.println(i + " - " + funcionarios[i].nome);
+                                }
+
+                                System.out.print("Código: ");
+                                int excluirFuncionario = entrada.nextInt();
+
+                                for (int i = excluirFuncionario; i < qtdFuncionarios - 1; i++) {
+                                    funcionarios[i] = funcionarios[i + 1];
+                                }
+
+                                qtdFuncionarios--;
+
+                                System.out.println("Funcionário removido!");
+                                break;
+
+                            case 3:
+
+                                for (int i = 0; i < qtdVeiculos; i++) {
+                                    System.out.println(i + " - Veículo");
+                                }
+
+                                System.out.print("Código: ");
+                                int excluirVeiculo = entrada.nextInt();
+
+                                for (int i = excluirVeiculo; i < qtdVeiculos - 1; i++) {
+                                    veiculos[i] = veiculos[i + 1];
+                                }
+
+                                qtdVeiculos--;
+
+                                System.out.println("Veículo removido!");
+                                break;
+                        }
+
+                    } while (opcaoExcluir != 0);
+
+                    break;
 
                 case 0:
                     System.out.println("Sistema encerrado.");
